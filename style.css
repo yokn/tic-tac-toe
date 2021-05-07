@@ -1,0 +1,23 @@
+body {
+  display: flex;
+
+  justify-content: center;
+  align-content: center;
+}
+
+#winner {
+}
+
+#grid {
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+div > div {
+  text-align: center;
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  background-color: #ccc;
+}
