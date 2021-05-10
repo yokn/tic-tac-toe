@@ -13,12 +13,12 @@ let gameOver = false;
 
 const grid = document.getElementById('grid');
 
-const playerFactory = (name, piece) => ({ name, piece });
+const playerFactory = (piece) => ({ piece });
 
 const game = (() => {
   const board = Array(9).fill('');
-  const player1 = playerFactory('Jerry', 'X');
-  const player2 = playerFactory('Tom', 'O');
+  const player1 = playerFactory('X');
+  const player2 = playerFactory('O');
   const currentPlayer = player1;
 
   return {
@@ -56,15 +56,15 @@ function isWon(board, piece) {
   return false;
 }
 
-function displayWinner(name) {
+function displayWinner(piece) {
   const winner = document.getElementById('winner');
   winner.style.visibility = 'visible';
-  winner.textContent = `${name} won!`;
+  winner.textContent = `${piece} won!`;
 }
 
-function endGame(name) {
+function endGame(piece) {
   gameOver = true;
-  displayWinner(name);
+  displayWinner(piece);
 }
 
 function isTie(board) {
@@ -76,7 +76,7 @@ function click(index) {
   if (makeMove(index, game.currentPlayer.piece) == null) return;
 
   if (isWon(game.board, game.currentPlayer.piece)) {
-    endGame(game.currentPlayer.name);
+    endGame(game.currentPlayer.piece);
     return;
   }
   if (isTie(game.board)) {
